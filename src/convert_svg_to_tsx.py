@@ -72,9 +72,9 @@ def _convert_svg_data_to_tsx_data(svg_input_data: TsxSvgData) -> TsxSvgData:
         "".join((x[0].upper() + x[1:]) for x in tsx_name.split("-")) + "Glyph"
     )
     output_data.tsx_file_content = '\n'.join([
-        f'''import "./glyphs.css"''',
+        f'''import "./glyphs.css";''',
         f'''import {{ Tooltip, TooltipProps }} from "@mui/material";''',
-        f'''import Glypher from "./glypher"''',
+        f'''import Glypher from "./glypher";''',
         f'''export default function {output_data.glyph_name}({{glyphTitle, placement, ...props}} : {{glyphTitle: string, placement?: TooltipProps[ "placement" ]}} & React.HTMLAttributes<HTMLDivElement>) {{''',
         f'''\treturn(<Glypher glyphTitle={{glyphTitle}} placement={{placement}} {{ ...props }}><div className="svg-glyph {output_data.glyph_custom_css_class}">{output_data.svg_data}</div></Glypher>);''',
         f'''}};''',
